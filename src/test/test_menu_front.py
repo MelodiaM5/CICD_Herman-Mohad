@@ -1,6 +1,6 @@
 import unittest
 
-class TestMenuDelete(unittest.menu):
+class TestMenuDelete(unittest.TestCase):
 
     def test_menur(self):
         return
