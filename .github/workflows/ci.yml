@@ -22,14 +22,14 @@ jobs:
           python -m unittest -v
       - name: Run package creation
         run: |
-          cd /src
+          cd src
           python -m pip install --user --upgrade build
           python -m build
       - name: Archive package
         uses: actions/upload-artifact@v2
         with:
           name: menu-front
-          path: /src/dist
+          path: src/dist
   release:
       runs-on: ubuntu-20.04
       # Lance le job release si build et test se sont terminés normalement.
