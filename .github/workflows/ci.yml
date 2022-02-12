@@ -22,7 +22,7 @@ jobs:
           python -m unittest -v
       - name: Run package creation
         run: |
-          cd src
+          cd /src
           python -m pip install --user --upgrade build
           python -m build
       - name: Archive package
@@ -40,7 +40,7 @@ jobs:
         - uses: actions/download-artifact@v2
           with:
             name: menu-front
-            path: ./src/dist/menu-front
+            path: /src/dist/menu-front
 
         - name: Create Release
           id: create_release
