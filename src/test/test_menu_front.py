@@ -2,8 +2,8 @@ import unittest
 
 class TestMenuDelete(unittest.TestCase):
 
-    def test_menur(self):
-        return
+     def test_upper(self):
+        self.assertEqual('foo'.upper(), 'FOO')
 
 if __name__ == '__main__':
     unittest.main()
