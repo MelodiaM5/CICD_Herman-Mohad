@@ -20,7 +20,6 @@ jobs:
         run: |
           cd src/test
           python -m unittest -v
-          coverage run -m unittest
       - name: Run package creation
         run: |
           cd src
