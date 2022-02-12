@@ -22,7 +22,7 @@ jobs:
           python -m unittest -v
       - name: Run package creation
         run: |
-          cd menu-front/src/
+          cd menu-front/
           python -m pip install --user --upgrade build
           python -m build
       - name: Archive package
