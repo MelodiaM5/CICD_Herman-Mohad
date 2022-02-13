@@ -15,11 +15,11 @@ jobs:
         run: |
           cd menu-front/src
           python -m pip install --upgrade pip
-          if [-f requirements.txt]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
       - name : Run Unit Tests 
         run: |
-          cd menu-front/src/test
-          python -m unittest -v
+          cd menu-front/src
+          nosetests --verbosity=2 test
   release:
       runs-on: ubuntu-20.04
       # Lance le job release si build et test se sont terminés normalement.
@@ -34,7 +34,7 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: my-artifact
-            path: menuFrontARchive.tar   
+            path: menuFrontArchive.tar   
 
         - name: Create Release
           id: create_release

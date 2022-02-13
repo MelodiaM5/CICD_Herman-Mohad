@@ -1,8 +1,8 @@
 #--- library -----------------------------------------------------------------------#
 import argparse as arg
 import requests
-from delete import *
-from list import *
+from services.delete import *
+from services.list import *
 #-----------------------------------------------------------------------------------#
 
 """
