@@ -1,1 +1,0 @@
-BASE_URL = 'https://menu-server-theo.herokuapp.com/menus'
