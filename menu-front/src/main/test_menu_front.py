@@ -1,5 +1,6 @@
 import unittest
 import utils.list
+import requests
 
 class TestMenuDelete(unittest.TestCase):
 
