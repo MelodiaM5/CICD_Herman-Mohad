@@ -18,7 +18,7 @@ jobs:
           if [-f requirements.txt]; then pip install -r requirements.txt; fi
       - name : Run Unit Tests 
         run: |
-          cd menu-front/src/test
+          cd menu-front/src/main
           python -m unittest -v
   release:
       runs-on: ubuntu-20.04
