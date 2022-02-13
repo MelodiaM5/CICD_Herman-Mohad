@@ -1,7 +1,7 @@
-import requests
+import requests as rq
 
 def listmenus(url):
-    r = requests.get(url)
+    r = rq.get(url)
     json = r.json()
     menu_layout = rewrite(json)
     return menu_layout
