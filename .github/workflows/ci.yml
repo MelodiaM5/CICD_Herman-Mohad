@@ -34,7 +34,7 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: my-artifact
-            path: menuFrontARchive.tar   
+            path: menuFrontArchive.tar   
 
         - name: Create Release
           id: create_release
