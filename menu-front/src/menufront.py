@@ -34,6 +34,7 @@ my_parser.add_argument('-delete',
 retrieve the different arguments in a variable
 """
 args = my_parser.parse_args()
+
 with open('services/constants.txt') as files:
     BASE_URL = files.read()
 if (args.URL):
