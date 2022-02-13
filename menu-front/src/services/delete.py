@@ -5,13 +5,9 @@ except ImportError:
 
 import requests
 
-def listmenus(url,id):
-    SUP_URL = urljoin(url, '{'+id+'}')
-    r = requests.get(url)
+def delete(url,id):
+    idString = 'menus/' + id
+    SUP_URL = urljoin(url, idString)
+    r = requests.delete(SUP_URL)
 
-    json = r.json()
-    print(json)
-    if r.ok:
-        return r
-    else:
-        return None
+    return r
