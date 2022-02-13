@@ -27,7 +27,7 @@ jobs:
       # Lance le job release uniquement si la branche est main.
       if: contains('refs/tags/v', github.ref)
       steps:
-         - name: 'Tar files'
+        - name: 'Tar files'
           run: tar -cvf menuFrontArchive.tar menu-front/src/main
 
         - name: 'Upload Artifact'
