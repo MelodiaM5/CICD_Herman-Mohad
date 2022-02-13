@@ -1,7 +1,7 @@
 #--- library -----------------------------------------------------------------------#
 import argparse as arg
-import utils.delete
-import utils.list
+from services.delete import *
+from services.list import *
 #-----------------------------------------------------------------------------------#
 
 """
@@ -25,4 +25,4 @@ retrieve the different arguments in a variable
 args = my_parser.parse_args()
 url = args.URL
 
-print(utils.list.listmenus(url))
+print(listmenus(url))
