@@ -18,8 +18,8 @@ jobs:
           if [-f requirements.txt]; then pip install -r requirements.txt; fi
       - name : Run Unit Tests 
         run: |
-          cd menu-front/src/test
-          python -m unittest -v
+          cd menu-front/src
+          nosetests --verbosity=2 test
   release:
       runs-on: ubuntu-20.04
       # Lance le job release si build et test se sont terminés normalement.
