@@ -15,32 +15,27 @@ jobs:
         run: |
           cd menu-front/src
           python -m pip install --upgrade pip
-          if [-f requirements.txt]; then pip install -r requirements.txt; fi
-      - name : Run Unit Tests and generate coverage report
+          pip install -r requirements.txt
+      - name : Run Unit Tests 
         run: |
-          cd menu-front/src/test
-          python -m unittest -v
-      - name: Run package creation
-        run: |
-          cd menu-front/
-          python -m pip install --user --upgrade build
-          python -m build
-      - name: Archive package
-        uses: actions/upload-artifact@v2
-        with:
-          name: menu-front
-          path: menu-front/src/dist
+          cd menu-front/src
+          nosetests --verbosity=2 test
+          python -m unittest
   release:
       runs-on: ubuntu-20.04
       # Lance le job release si build et test se sont terminés normalement.
-      needs: build
+      needs: Build
       # Lance le job release uniquement si la branche est main.
       if: contains('refs/tags/v', github.ref)
       steps:
-        - uses: actions/download-artifact@v2
+        - name: 'Tar files'
+          run: tar -cvf menuFrontArchive.tar menu-front/src/main
+
+        - name: 'Upload Artifact'
+          uses: actions/upload-artifact@v2
           with:
-            name: menu-front
-            path: menu-front/src/dist/menu-front
+            name: my-artifact
+            path: menuFrontArchive.tar   
 
         - name: Create Release
           id: create_release
@@ -60,6 +55,6 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-            asset_path: ./src/dist/menu-front
-            asset_name: menu-front
-            asset_content_type: application/dist
+            asset_path: ./menuFrontArchive.tar
+            asset_name: menuFrontArchive.tar
+            asset_content_type: application/zip
