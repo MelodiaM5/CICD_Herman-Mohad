@@ -4,7 +4,9 @@ from asyncio import constants
 import requests
 from services.delete import *
 from services.list import *
-#-----------------------------------------------------------------------------------#
+
+
+#---Main ------------------------------------------------------------------------------#
 
 """
 create the command line parser with its name and description
@@ -37,6 +39,8 @@ args = my_parser.parse_args()
 
 with open('services/constants.txt') as files:
     BASE_URL = files.read()
+
+# determinate the action to do    
 if (args.URL):
     with open('services/constants.txt', mode='w') as files:
         files.write(args.URL)
