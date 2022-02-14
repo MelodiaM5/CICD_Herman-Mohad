@@ -1,3 +1,6 @@
+""" Code to delete menus """
+
+#--- librairies -------------------------------------------------#
 try:
     from urllib.parse import urljoin
 except ImportError:
@@ -5,13 +8,18 @@ except ImportError:
 
 import requests
 
-def listmenus(url,id):
-    SUP_URL = urljoin(url, '{'+id+'}')
-    r = requests.get(url)
+#--- Functions ---------------------------------------------------#
+def delete(url,id):
+    """
+        Function to delete a menus
+        url: url where the request should be done
+        type: string
+        id: id to the menu to delete
+        type: string
+        return: reponse to the server
+    """
+    idString = 'menus/' + id
+    SUP_URL = urljoin(url, idString)
+    r = requests.delete(SUP_URL)
 
-    json = r.json()
-    print(json)
-    if r.ok:
-        return r
-    else:
-        return None
+    return r
